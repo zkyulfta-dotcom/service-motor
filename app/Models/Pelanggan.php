@@ -9,13 +9,19 @@ class Pelanggan extends Model
 {
     use HasFactory;
 
-    protected $table = 'pelanggan';
-    
-    // TEMPELKAN KODE INI DI SINI:
+    protected $table = 'pelanggans';
+    protected $primaryKey = 'id_pelanggan';
+
     protected $fillable = [
-        'pelanggan_id', 
-        'pelanggan_nama', 
-        'alamat', 
-        'no_hp'
+        'nama_lengkap',
+        'no_hp',
+        'alamat_pelanggan',
+        'pekerjaan',
     ];
+
+    // Tambahkan relasi ke ServicePelanggan
+    public function servicePelanggans()
+    {
+        return $this->hasMany(ServicePelanggan::class, 'id_pelanggan', 'id_pelanggan');
+    }
 }

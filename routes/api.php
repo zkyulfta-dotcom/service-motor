@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PelangganController;
 use App\Http\Controllers\Api\StafApotekController;
 use App\Http\Controllers\Api\DaftarObatController;
+// Tambahan Controller Service Motor
+use App\Http\Controllers\Api\KendaraanController;
+use App\Http\Controllers\Api\ServicePelangganController;
+use App\Http\Controllers\Api\DataServiceController;
+use App\Http\Controllers\Api\PembayaranServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +44,16 @@ Route::post('/obat', [DaftarObatController::class, 'store']);         // Menamba
 Route::get('/obat/{id}', [DaftarObatController::class, 'show']);      // Menampilkan detail data obat
 Route::put('/obat/{id}', [DaftarObatController::class, 'update']);    // Mengubah data obat
 Route::delete('/obat/{id}', [DaftarObatController::class, 'destroy']); // Menghapus data obat
+
+
+// ==========================================
+// --- ROUTE APLIKASI SERVICE MOTOR ---
+// ==========================================
+
+Route::apiResource('kendaraan', KendaraanController::class);
+Route::apiResource('service-pelanggan', ServicePelangganController::class);
+Route::apiResource('data-service', DataServiceController::class);
+Route::apiResource('pembayaran-service', PembayaranServiceController::class);
+
+// Endpoint khusus untuk memanggil keluhan otomatis berdasarkan ID Servis Pelanggan
+Route::get('service-pelanggan-detail/{id}', [DataServiceController::class, 'getDetailService']);

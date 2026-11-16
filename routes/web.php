@@ -196,3 +196,12 @@ Route::post('/obat-web', [DaftarObatWebController::class, 'store'])->name('obat.
 Route::get('/obat-web/{id}/edit', [DaftarObatWebController::class, 'edit'])->name('obat.web.edit');
 Route::put('/obat-web/{id}', [DaftarObatWebController::class, 'update'])->name('obat.web.update');
 Route::delete('/obat-web/{id}', [DaftarObatWebController::class, 'destroy'])->name('obat.web.destroy');
+
+
+// ==================================================
+// 13. TAMBAHAN RUTE APLIKASI SERVICE MOTOR
+// ==================================================
+
+Route::get('/service-motor', function () {
+    return view('service_motor');
+})->name('service.motor');
